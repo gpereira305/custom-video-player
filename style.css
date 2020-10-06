@@ -1,0 +1,313 @@
+:root {
+  --secondary-color: #d40000;
+  --font-color: white;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+}
+
+.fas {
+  color: var(--font-color);
+  font-size: 35px;
+}
+
+.player {
+  max-width: 65vw;
+  min-width: 800px;
+  border: 5px solid var(--secondary-color);
+  border-radius: 2px;
+  background: #000;
+  position: relative;
+  cursor: pointer;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+/*++++++++++ Containers ++++++++++*/
+.show-controls {
+  width: 100%;
+  height: 20%;
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  cursor: default;
+}
+
+.controls-container {
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
+  height: 85px;
+  margin-top: -95px;
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: all .5s ease-out 2s;
+}
+
+.show-controls:hover .controls-container {
+  opacity: 1;
+  transition: all .3s ease-out;
+}
+
+.control-group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls-left,
+.controls-right {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  top: 30px;
+}
+
+/* +++++  Progress Bar ++++++++*/
+.progress-range {
+  height: 8px;
+  width: calc(100% - 30px);
+  background: rgba(104, 104, 104, 0.5);
+  margin: auto;
+  border-radius: 10px;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.progress-range:hover {
+  height: 10px;
+}
+
+
+.progress-bar {
+  background: var(--secondary-color);
+  width: 10%;
+  height: 100%;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+
+/*+++++++   Left Controls  +++++++++*/
+
+.controls-left {
+  justify-content: flex-start;
+  margin-left: 15px;
+}
+
+/* ++++++++ Play & Pause ++++++++ */
+.play-controls {
+  margin-right: 15px;
+}
+
+.fa-play:hover,
+.fa-pause:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/*+++++++++ Volume +++++++++*/
+.volume-icon {
+  cursor: pointer;
+}
+
+.volume-range {
+  height: 8px;
+  width: 100px;
+  background: rgba(70, 70, 70, 0.5);
+  border-radius: 10px;
+  position: relative;
+  top: -21px;
+  left: 50px;
+  cursor: pointer;
+}
+
+.volume-bar {
+  background: var(--font-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.2s ease-in;
+}
+
+.volume-bar:hover {
+  background: var(--secondary-color);
+}
+
+/* +++++++++ Right Controls +++++++++*/
+.controls-right {
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+
+.speed,
+.time {
+  position: relative;
+  top: 10px;
+}
+
+/*++++++++++ Playback Speed ++++++++++*/
+.speed {
+  margin-right: 15px;
+}
+
+
+select {
+  background: transparent;
+  color: var(--font-color);
+  border: none;
+  font-size: 18px;
+  position: relative;
+  top: -2.5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+}
+
+
+select>option {
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  font-size: 14px;
+
+}
+
+/*++++++++  Elapsed Time & Duration  ++++++++*/
+.time {
+  margin-right: 15px;
+  color: var(--font-color);
+  font-weight: bold;
+  user-select: none;
+}
+
+/*+++++++ Fullscreen  +++++++*/
+.fullscreen {
+  cursor: pointer;
+}
+
+.video-fullscreen {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.footer-container p {
+  color: #fff;
+  margin: 0;
+}
+
+.copyright {
+  color: #fff;
+}
+
+/* ++++++++++++ MEDIA QUERY 1024px ++++++++++++*/
+@media(max-width: 1024px) {
+
+  .player {
+    max-width: 0;
+    min-width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .fas {
+    font-size: 20px;
+  }
+
+  .controls-container {
+    height: 50px;
+  }
+
+  .control-group {
+    position: relative;
+    top: -25px;
+  }
+
+  .progress-range {
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+  }
+
+  .progress-bar {
+    border-radius: 0;
+  }
+
+  .volume-range {
+    width: 50px;
+    left: 30px;
+    top: -15px;
+  }
+
+  .speed,
+  .time {
+    top: 3px;
+  }
+
+  select {
+    font-size: 12px;
+  }
+
+  .time {
+    font-size: 12px;
+  }
+}
+
+/* ++++++++++++ MEDIA QUERY 900px  500px ++++++++++++*/
+@media screen and (max-width: 900px) and (max-height: 500px) {
+  .player {
+    max-height: 95vh;
+    max-width: auto;
+  }
+
+  video {
+    height: 95vh;
+    object-fit: cover;
+  }
+
+  .video-fullscreen {
+    height: 97.5vh;
+    border-radius: 0;
+  }
+}
